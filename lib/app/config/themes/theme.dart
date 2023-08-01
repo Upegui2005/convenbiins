@@ -8,8 +8,9 @@ const List<Color> _colorTheme=[
   _customColor,
   Color(0xFF0D8C7F),
   Color(0xFF65A69F),
-  Color(0xFF9BBFBC),
+  Color(0xFF000000),
   Color(0xFFF0F1F2),
+  Color(0xFF0D31ED),
 ];
 
 class AppTheme{
