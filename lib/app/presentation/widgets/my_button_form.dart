@@ -32,9 +32,11 @@ class MyButtonForm extends StatelessWidget {
           ],
         ),
         child: Text(text,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.primary,
+          style: const TextStyle(
+            // color: Theme.of(context).colorScheme.primary,
+            color: Colors.black,
             fontSize: 16,
+
             fontWeight: FontWeight.w600,
           ),
         ),
