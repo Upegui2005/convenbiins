@@ -10,7 +10,7 @@ import 'package:covenbiins/app/presentation/views/views_links.dart';
 
 final appRouter = GoRouter(
   //La ruta inicial de la aplicación
-  initialLocation: '/',
+  initialLocation: '/register',
   // rutas de la aplicación
   routes: [
     GoRoute(
