@@ -1,3 +1,4 @@
+import 'package:covenbiins/app/presentation/views/forgot_password/forgot_%20password_view.dart';
 import 'package:covenbiins/app/presentation/views/login/widgets/login_divider.dart';
 import 'package:covenbiins/app/presentation/widgets/form_text_field.dart';
 import 'package:covenbiins/app/presentation/widgets/my_button_form.dart';
@@ -61,7 +62,13 @@ class LoginView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context)=> const ForgotPasswordView()
+                              ),
+                            );
+                          },
                           child: Text('Forgot your password?',
                             style: TextStyle(
                               color: Theme.of(context).colorScheme.primary,

@@ -2,6 +2,7 @@
 //Se debe importar el archivo de la vista que se desea mostrar
 //Se debe agregar la ruta en el Map de rutas
 
+import 'package:covenbiins/app/presentation/views/forgot_password/forgot_%20password_view.dart';
 import 'package:go_router/go_router.dart';
 
 //Archivo que contiene los links de las vistas
@@ -27,6 +28,11 @@ final appRouter = GoRouter(
       path: '/login',
       name: LoginView.name,
       builder: (context, state) => const LoginView(),
+    ),
+    GoRoute(
+      path: '/password',
+      name: LoginView.name,
+      builder: (context, state) => const ForgotPasswordView(),
     ),
 
   ],
