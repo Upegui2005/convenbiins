@@ -6,8 +6,10 @@ import 'package:covenbiins/app/presentation/widgets/my_button_form.dart';
 class RegisterView extends StatelessWidget {
 
   static const String name = 'register_view';
+  final _emailAddress = TextEditingController();
+  final _visiblePassword = TextEditingController();
 
-  const RegisterView({super.key});
+  RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,28 +36,31 @@ class RegisterView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20,),
-                const MyFormTextField(
+                MyFormTextField(
                     labelText: 'Email',
                     hintText: 'Enter your email',
                     textInputType: TextInputType.emailAddress,
                     obscureText: false,
                     suffixIcon: false,
+                    controller: _emailAddress,
                 ),
                 const SizedBox(height: 20,),
-                const MyFormTextField(
+                MyFormTextField(
                   labelText: 'Contraseña',
                   hintText: 'Ingresa tu contraseña',
                   textInputType: TextInputType.visiblePassword,
                   obscureText: true,
                   suffixIcon: false,
+                  controller: _visiblePassword,
                 ),
                 const SizedBox(height: 20,),
-                const MyFormTextField(
+                MyFormTextField(
                   labelText: 'Confirmar contraseña',
                   hintText: 'Confirma la contraseña',
                   textInputType: TextInputType.visiblePassword,
                   obscureText: true,
                   suffixIcon: false,
+                  controller: _visiblePassword,
                 ),
                 const SizedBox(height: 20,),
                 //Button

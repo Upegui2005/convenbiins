@@ -6,8 +6,9 @@ import 'package:covenbiins/app/presentation/widgets/my_button_form.dart';
 class ForgotPasswordView extends StatelessWidget {
 
   static const String name = 'forgotpassword_view';
+  final _emailAddress = TextEditingController();
 
-  const ForgotPasswordView({super.key});
+  ForgotPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +34,13 @@ class ForgotPasswordView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20,),
-                const MyFormTextField(
+                MyFormTextField(
                   labelText: 'Email',
                   hintText: 'Ingresa el correo electronico',
                   textInputType: TextInputType.emailAddress,
                   obscureText: false,
                   suffixIcon: false,
+                  controller: _emailAddress,
                 ),
                 const SizedBox(height: 20,),
                 //Button

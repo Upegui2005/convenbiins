@@ -1,18 +1,19 @@
 import 'package:covenbiins/app/presentation/views/forgot_password/forgot_%20password_view.dart';
-import 'package:covenbiins/app/presentation/views/login/widgets/login_divider.dart';
-import 'package:covenbiins/app/presentation/widgets/form_text_field.dart';
-import 'package:covenbiins/app/presentation/widgets/my_button_form.dart';
-import 'package:covenbiins/app/presentation/widgets/my_social_button.dart';
+import 'package:covenbiins/app/presentation/widgets/links_common_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:covenbiins/app/presentation/views/login/widgets/login_divider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import '../register/register_view.dart';
+
 
 class LoginView extends StatelessWidget {
 
   static const String name = 'login_view';
 
-  const LoginView({super.key});
+  final _emailAddress = TextEditingController();
+  final _visiblePassword = TextEditingController();
+
+  LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,20 +41,22 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20,),
-                const MyFormTextField(
+                MyFormTextField(
                   labelText: 'Email',
                   hintText: 'Enter your email',
                   textInputType: TextInputType.emailAddress,
                   obscureText: false,
                   suffixIcon: false,
+                  controller: _emailAddress,
                 ),
                 const SizedBox(height: 20,),
-                const MyFormTextField(
+                MyFormTextField(
                   labelText: 'Password',
                   hintText: 'Password',
                   textInputType: TextInputType.visiblePassword,
                   obscureText: true,
                   suffixIcon: false,
+                  controller: _visiblePassword,
                 ),
 
                 Padding(
@@ -65,7 +68,7 @@ class LoginView extends StatelessWidget {
                           onPressed: (){
                             Navigator.push(context,
                               MaterialPageRoute(
-                                  builder: (context)=> const ForgotPasswordView()
+                                  builder: (context)=> ForgotPasswordView()
                               ),
                             );
                           },
@@ -82,7 +85,10 @@ class LoginView extends StatelessWidget {
                 //Button
                 MyButtonForm(
                   text: 'Login',
-                  onTab: (){},
+                  onTab: (){
+                    print('Email Address: ${_emailAddress.text}');
+                    print('Password: ${_visiblePassword.text}');
+                  },
                 ),
                 const SizedBox(height: 20,),
                 //Divider
@@ -123,7 +129,7 @@ class LoginView extends StatelessWidget {
                           onPressed: (){
                             Navigator.push(context,
                                 MaterialPageRoute(
-                                    builder: (context)=> const RegisterView()
+                                    builder: (context)=> RegisterView()
                                 ),
                             );
                           },
