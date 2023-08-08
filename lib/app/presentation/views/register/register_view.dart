@@ -9,8 +9,11 @@ import '../login/widgets/login_divider.dart';
 class RegisterView extends StatelessWidget {
 
   static const String name = 'register_view';
+  final _emailAddress = TextEditingController();
+  final _visiblePassword = TextEditingController();
 
-  const RegisterView({super.key});
+
+  RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,28 +38,31 @@ class RegisterView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20,),
-                  const MyFormTextField(
+                  MyFormTextField(
                     labelText: 'Email',
                     hintText: 'Enter your email',
                     textInputType: TextInputType.emailAddress,
                     obscureText: false,
                     suffixIcon: false,
+                    controller: _emailAddress,
                   ),
                   const SizedBox(height: 20,),
-                  const MyFormTextField(
+                  MyFormTextField(
                     labelText: 'Password',
                     hintText: 'Enter your password',
                     textInputType: TextInputType.visiblePassword,
                     obscureText: true,
                     suffixIcon: false,
+                    controller: _visiblePassword,
                   ),
                   const SizedBox(height: 20,),
-                  const MyFormTextField(
+                  MyFormTextField(
                     labelText: 'Password',
                     hintText: 'Enter again your password',
                     textInputType: TextInputType.visiblePassword,
                     obscureText: true,
                     suffixIcon: false,
+                    controller: _visiblePassword,
                   ),
                   const SizedBox(height: 20,),
                   //Form

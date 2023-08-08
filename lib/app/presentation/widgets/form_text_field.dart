@@ -7,6 +7,7 @@ class MyFormTextField extends StatelessWidget {
   final TextInputType textInputType;
   final bool obscureText;
   final bool suffixIcon;
+  final TextEditingController controller;
 
   const MyFormTextField({
     super.key,
@@ -14,7 +15,7 @@ class MyFormTextField extends StatelessWidget {
     required this.hintText,
     required this.textInputType,
     required this.obscureText,
-    required this.suffixIcon
+    required this.suffixIcon, required this.controller
   });
 
   @override
@@ -24,6 +25,7 @@ class MyFormTextField extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(6.0),
+
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
@@ -33,13 +35,16 @@ class MyFormTextField extends StatelessWidget {
           ],
       ),
       child: TextField(
+        controller: controller,
         obscureText: obscureText,
         keyboardType: textInputType,
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
           hintStyle: TextStyle(
+
             color: Theme.of(context).colorScheme.primary.withOpacity(0.5)
+
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
