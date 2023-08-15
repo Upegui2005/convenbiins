@@ -63,7 +63,7 @@ class LoginView extends StatelessWidget {
                       TextButton(
                           onPressed: (){
                             Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const ForgotPasswordView()),
+                                MaterialPageRoute(builder: (context) => ForgotPasswordView()),
                             );
                           },
                           child: Text('Forgout your password?',
