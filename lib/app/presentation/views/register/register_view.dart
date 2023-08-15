@@ -69,7 +69,10 @@ class RegisterView extends StatelessWidget {
                   //Button
                   MyButtonForm(
                     text: 'Register',
-                    onTab: (){},
+                    onTab: (){
+                      print('Email Address: ${_emailAddress.text}');
+                      print('Password: ${_visiblePassword.text}');
+                    },
                   ),
                   //TextButton
                   const SizedBox(height: 20,),

@@ -3,7 +3,6 @@ import 'package:covenbiins/app/presentation/views/login/widgets/login_divider.da
 import 'package:covenbiins/app/presentation/views/register/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:covenbiins/app/presentation/widgets/links_common_widgets.dart';
 
 
