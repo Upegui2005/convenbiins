@@ -2,8 +2,6 @@
 //Se debe importar el archivo de la vista que se desea mostrar
 //Se debe agregar la ruta en el Map de rutas
 
-import 'dart:js';
-
 import 'package:go_router/go_router.dart';
 
 
@@ -47,7 +45,7 @@ final appRouter = GoRouter(
     ),
 
     GoRoute(
-        path: '/forgot_password',
+        path: '/forgot_password_view',
         name: ForgotPasswordView.name,
         builder: (context, state) => ForgotPasswordView()
     ),
