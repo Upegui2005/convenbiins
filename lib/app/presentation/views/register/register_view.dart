@@ -1,15 +1,30 @@
+import 'package:covenbiins/app/presentation/views/register/widgets/my_check_box.dart';
 import 'package:covenbiins/app/presentation/widgets/form_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:covenbiins/app/presentation/widgets/my_button_form.dart';
 
-class RegisterView extends StatelessWidget {
+import '../../../config/security/encript.dart';
+
+class RegisterView extends StatefulWidget {
 
   static const String name = 'register_view';
+
+  const RegisterView({
+    super.key
+  });
+
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
+
   final _emailAddress = TextEditingController();
   final _visiblePassword = TextEditingController();
+  final _confirmPassword = TextEditingController();
 
-  RegisterView({super.key});
+  bool _checkBox      = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,16 +72,45 @@ class RegisterView extends StatelessWidget {
                 MyFormTextField(
                   labelText: 'Confirmar contraseña',
                   hintText: 'Confirma la contraseña',
-                  textInputType: TextInputType.visiblePassword,
+                  textInputType: TextInputType.confirmPassword,
                   obscureText: true,
                   suffixIcon: false,
-                  controller: _visiblePassword,
+                  controller: _confirmPassword,
                 ),
                 const SizedBox(height: 20,),
+                MyCheckBox(
+                    value: _checkBox,
+                    onChanged: (bool? value){
+                      setState(() {
+                        _checkBox = value!;
+                      });
+                    },
+                  ),
                 //Button
                 MyButtonForm(
                   text: 'Registrarme',
-                  onTab: (){},
+                  onTab: (){
+                    if(_checkBox==false){
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text('You must accept the terms and conditions'),
+                            backgroundColor: Theme.of(context).colorScheme.error,
+                            duration: const Duration(seconds: 2),
+                          )
+                      );
+                    }else{
+                      print(encript(_visiblePassword.text));
+                      print(encript(_confirmPassword.text));
+                      if(_visiblePassword.text==_confirmPassword.text){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: const Text('You registered'),
+                              backgroundColor: Theme.of(context).colorScheme.primary,
+                              duration: const Duration(seconds: 2),
+                            ),
+                        );
+                      };
+                    }
+                  },
                 ),
               ],
             ),
