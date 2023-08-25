@@ -3,21 +3,28 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../widgets/form_text_field.dart';
 import '../../widgets/my_button_form.dart';
-import '../../widgets/my_social_button.dart';
-import '../login/widgets/login_divider.dart';
+import 'package:covenbiins/app/presentation/views/register/widget/my_check_box.dart';
 
-class RegisterView extends StatelessWidget {
+class RegisterView extends StatefulWidget {
 
   static const String name = 'register_view';
+
+  const RegisterView({super.key});
+
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
+
   final _emailAddress = TextEditingController();
   final _visiblePassword = TextEditingController();
 
-
-  RegisterView({super.key});
+  bool _checkBox = false;
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: SafeArea(
             child: Container(
@@ -34,12 +41,15 @@ class RegisterView extends StatelessWidget {
 
                   Text('Register',
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .primary,
                     ),
                   ),
                   const SizedBox(height: 20,),
                   MyFormTextField(
-                    labelText: 'Email',
+                    labelText: 'Correo Electronico',
                     hintText: 'Enter your email',
                     textInputType: TextInputType.emailAddress,
                     obscureText: false,
@@ -48,7 +58,7 @@ class RegisterView extends StatelessWidget {
                   ),
                   const SizedBox(height: 20,),
                   MyFormTextField(
-                    labelText: 'Password',
+                    labelText: 'Contraseña',
                     hintText: 'Enter your password',
                     textInputType: TextInputType.visiblePassword,
                     obscureText: true,
@@ -57,47 +67,44 @@ class RegisterView extends StatelessWidget {
                   ),
                   const SizedBox(height: 20,),
                   MyFormTextField(
-                    labelText: 'Password',
+                    labelText: 'Contraseña',
                     hintText: 'Enter again your password',
                     textInputType: TextInputType.visiblePassword,
                     obscureText: true,
                     suffixIcon: false,
                     controller: _visiblePassword,
                   ),
+
+                  const SizedBox(height: 20,),
+                  MyCheckBox(
+                      value: _checkBox,
+                      onChanged: (bool? value){
+                        setState(() {
+                          _checkBox = value!;
+                        });
+                      }
+                  ),
+
                   const SizedBox(height: 20,),
                   //Form
                   //Button
                   MyButtonForm(
                     text: 'Register',
-                    onTab: (){
-                      print('Email Address: ${_emailAddress.text}');
-                      print('Password: ${_visiblePassword.text}');
+                    onTab: () {
+                      if(_checkBox == false){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: const Text('No aceptaste los terminos y condiciones'),
+                                backgroundColor: Theme.of(context).colorScheme.error,
+                                duration: const Duration(seconds: 2),
+                            ),
+                        );
+                      }
+                      else{
+                      }
                     },
                   ),
                   //TextButton
-                  const SizedBox(height: 20,),
-                  const LoginDivider(),
-
-                  const SizedBox(height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MySocialButton(
-                        onTap: (){},
-                        imagePath: 'assets/icons/facebook.png',
-                      ),
-                      const SizedBox(width: 30,),
-                      MySocialButton(
-                          onTap: (){},
-                          imagePath: 'assets/icons/google.png'
-                      ),
-                      const SizedBox(width: 30,),
-                      MySocialButton(
-                          onTap: (){},
-                          imagePath: 'assets/icons/twitter.png'
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
