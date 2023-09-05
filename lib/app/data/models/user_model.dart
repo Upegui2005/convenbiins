@@ -9,7 +9,6 @@ class UsersModel{
   final String direccion;
   final String tipoUsuario;
   final String idautenticacion;
-  final String idratings;
 
   UsersModel({
     required this.cedula,
@@ -20,7 +19,6 @@ class UsersModel{
     required this.direccion,
     required this.tipoUsuario,
     required this.idautenticacion,
-    required this.idratings
   });
 
   static UsersModel fromJson(Map<String, dynamic> json) => UsersModel(
@@ -32,7 +30,6 @@ class UsersModel{
     direccion: json ['direccion'],
     tipoUsuario: json ['tipuUsuario'],
     idautenticacion: json ['idautenticacion'],
-    idratings: json ['idratings']
   );
 
   Map<String, dynamic> toJson() => <String, dynamic> {
@@ -44,6 +41,5 @@ class UsersModel{
     'direccion':direccion,
     'tipoUsuario':tipoUsuario,
     'idautenticacion':idautenticacion,
-    'idratings':idratings
   };
 }

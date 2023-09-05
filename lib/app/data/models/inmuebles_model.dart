@@ -9,6 +9,7 @@ class InmublesModel{
   final Float precio;
   final String direccion;
   final String imagen;
+  final String cedula;
 
   InmublesModel({
     required this.idinmueble,
@@ -17,7 +18,8 @@ class InmublesModel{
     required this.descripcion,
     required this.precio,
     required this.direccion,
-    required this.imagen
+    required this.imagen,
+    required this.cedula
   });
 
   static InmublesModel fromJson(Map<String, dynamic> json) => InmublesModel(
@@ -27,7 +29,8 @@ class InmublesModel{
     descripcion: json ['descripcion'],
     precio: json ['precio'],
     direccion: json ['direccion'],
-    imagen: json ['imagen']
+    imagen: json ['imagen'],
+    cedula: json ['cedula']
   );
 
   Map<String, dynamic> toJson() => <String, dynamic> {
@@ -37,6 +40,7 @@ class InmublesModel{
     'descripcion': descripcion,
     'precio': precio,
     'direccion': direccion,
-    'imagen': imagen
+    'imagen': imagen,
+    'cedula': cedula
   };
 }
